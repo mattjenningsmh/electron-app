@@ -2,10 +2,11 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('node:path');
 const pollResources = require('./resourceManager')
 
+var mainMenu = 'false'; 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
-}
+};
 
 const createWindow = () => {
   // Create the browser window.
@@ -18,15 +19,26 @@ const createWindow = () => {
       contextIsolation: true, 
     },
   });
+  mainMenu = 'true'; 
+  
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
-
-  
+  // mainWindow.webContents.openDevTools(); 
 };
+
+//expose the main menu value to the renderer process
+ipcMain.handle('getMainMenu', () => mainMenu);
+
+//set up listener to handle messages from the renderer process
+ipcMain.on('message-from-renderer', (event, arg) => {
+  console.log('Message received from renderer:', arg); 
+  event.reply('message-from-main', 'message received');
+}
+);
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
