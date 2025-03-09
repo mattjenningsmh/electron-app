@@ -30,12 +30,12 @@ import { createRoot } from 'react-dom/client';
     );
 };*/
 import MyApp from './tutorial.jsx';
-
+import VSCodeLayout from './mainLayout.jsx';
 
 const App = () => {
-    const [mainMenu, setMainMenu] = React.useState(false); 
+    //const [mainMenu, setMainMenu] = React.useState(false); 
 
-    React.useEffect(() => {
+    /*React.useEffect(() => {
         const fetchMainMenuStatus = async () => {
             try{
                 const result = await window.navigationn.getMainMenu(); 
@@ -46,7 +46,7 @@ const App = () => {
             }
         };
         fetchMainMenuStatus();
-    }, []); 
+    }, []);*/ 
     
     //send message to main process
     const handleButtonClick = () => {
@@ -62,10 +62,10 @@ const App = () => {
     }, []);
     
     
-    if (!mainMenu) {
+    /*if (!mainMenu) {
         return <p>loading...</p>; 
-    }
-    return (
+    }*/
+    /*return (
         <div>
             {mainMenu ? (
                 <div>
@@ -78,6 +78,12 @@ const App = () => {
                 </p>
             )}
         </div>
+    );*/
+    return (
+        <div>
+            <VSCodeLayout /> 
+        </div>
+        
     );
 };
 

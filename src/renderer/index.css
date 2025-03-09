@@ -4,4 +4,11 @@ body {
   margin: auto;
   max-width: 38rem;
   padding: 2rem;
+  background-color: #151515;
+  color: #FFFFFF;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: #303040;
 }

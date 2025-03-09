@@ -19,7 +19,7 @@ const createWindow = () => {
       contextIsolation: true, 
     },
   });
-  mainMenu = 'true'; 
+  mainMenu = 'false'; 
   
 
   // and load the index.html of the app.
